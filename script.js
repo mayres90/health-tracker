@@ -164,7 +164,6 @@ const trainingTemplates = {
 };
 
 const sessionType = document.getElementById("session-type");
-const warmupPlan = document.getElementById("warmup-plan");
 const mainPlan = document.getElementById("main-plan");
 const mobilityPlan = document.getElementById("mobility-plan");
 const runPlan = document.getElementById("run-plan");
@@ -186,7 +185,6 @@ sessionType.addEventListener("change", function () {
 });
 
 function clearPlans() {
-    warmupPlan.innerHTML = "";
     mainPlan.innerHTML = "";
     mobilityPlan.innerHTML = "";
     runPlan.innerHTML = "";
