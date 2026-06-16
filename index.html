@@ -20,36 +20,41 @@
     </section>
 
     <section>
-        <h2>Workout Session</h2>
+        <h2>Training Session</h2>
 
         <label for="session-date">Date</label>
         <input type="date" id="session-date">
 
-        <label for="workout-type">Workout Type</label>
-        <select id="workout-type">
-            <option value="">Select workout type</option>
-            <option value="Upper Strength">Upper Strength</option>
-            <option value="Lower Strength">Lower Strength</option>
-            <option value="Upper Volume">Upper Volume</option>
-            <option value="Lower Volume">Lower Volume</option>
-            <option value="Mobility">Mobility</option>
+        <label for="session-type">Session Type</label>
+        <select id="session-type">
+            <option value="">Select session type</option>
+            <option value="Speed Run">Day 1 - Speed Run</option>
+            <option value="Upper Strength">Day 2 - Upper Strength</option>
+            <option value="Easy Run">Day 3 - Easy Run</option>
+            <option value="Lower Strength">Day 4 - Lower Strength</option>
+            <option value="Tempo Run">Day 5 - Tempo Run</option>
+            <option value="Full Body Volume">Day 6 - Full Body Volume</option>
+            <option value="Long Run + Mobility">Day 7 - Long Run + Mobility</option>
         </select>
     </section>
 
-    <section>
-        <h2>Workout Plan</h2>
-        <div id="workout-plan"></div>
+    <section id="run-section">
+        <h2>Run</h2>
+        <div id="run-plan"></div>
+    </section>
+
+    <section id="main-section">
+        <h2>Main Workout</h2>
+        <div id="main-plan"></div>
+    </section>
+
+    <section id="mobility-section">
+        <h2>Recovery / Mobility</h2>
+        <div id="mobility-plan"></div>
     </section>
 
     <section>
-        <h2>Current Session</h2>
-        <div id="current-session"></div>
         <button id="save-session-button">Save Session</button>
-    </section>
-
-    <section>
-        <h2>Future Improvements</h2>
-        <p>TODO: Add an editable workout templates page so the program can be changed without editing code.</p>
     </section>
 
     <script src="script.js"></script>
