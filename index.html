@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Workout Tracker</title>
+    <title>Health Tracker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Michael's Workout Tracker</h1>
+    <h1>Health Tracker</h1>
 
-    <h2>Today's Workout</h2>
+    <section>
+        <h2>Session Details</h2>
 
-    <label>Date:</label>
-    <input type="date">
+        <label for="session-date">Date</label>
+        <input type="date" id="session-date">
 
-    <br><br>
+        <label for="workout-type">Workout Type</label>
+        <select id="workout-type">
+            <option value="">Select workout type</option>
+            <option value="Upper Strength">Upper Strength</option>
+            <option value="Lower Strength">Lower Strength</option>
+            <option value="Upper Volume">Upper Volume</option>
+            <option value="Lower Volume">Lower Volume</option>
+            <option value="Run">Run</option>
+            <option value="Mobility">Mobility</option>
+        </select>
 
-    <label>Body Weight (kg):</label>
-    <input type="number">
+        <label for="bodyweight">Bodyweight (kg)</label>
+        <input type="number" id="bodyweight" step="0.1">
+    </section>
 
-    <br><br>
+    <section>
+        <h2>Exercise Log</h2>
 
-    <label>Exercise:</label>
-    <input type="text">
+        <label for="exercise-name">Exercise</label>
+        <input type="text" id="exercise-name" placeholder="Bench Press">
 
-    <br><br>
+        <label for="set-number">Set Number</label>
+        <input type="number" id="set-number" placeholder="1">
 
-    <label>Weight Lifted (kg):</label>
-    <input type="number">
+        <label for="weight">Weight (kg)</label>
+        <input type="number" id="weight" step="0.5" placeholder="80">
 
-    <br><br>
+        <label for="reps">Reps</label>
+        <input type="number" id="reps" placeholder="5">
 
-    <label>Reps:</label>
-    <input type="number">
+        <button id="add-set-button">Add Set</button>
+    </section>
 
-    <br><br>
+    <section>
+        <h2>Current Session</h2>
 
-    <button>Save Workout</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Set</th>
+                    <th>Weight</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody id="sets-table-body">
+            </tbody>
+        </table>
+
+        <button id="save-session-button">Save Session</button>
+    </section>
+
+    <section>
+        <h2>Saved Sessions</h2>
+        <div id="saved-sessions"></div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
