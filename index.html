@@ -22,6 +22,8 @@
     <section>
         <h2>Training Session</h2>
 
+        <p id="draft-status">No draft loaded.</p>
+
         <label for="session-date">Date</label>
         <input type="date" id="session-date">
 
@@ -38,23 +40,24 @@
         </select>
     </section>
 
-    <section id="run-section">
+    <section>
         <h2>Run</h2>
         <div id="run-plan"></div>
     </section>
 
-    <section id="main-section">
+    <section>
         <h2>Main Workout</h2>
         <div id="main-plan"></div>
     </section>
 
-    <section id="mobility-section">
+    <section>
         <h2>Recovery / Mobility</h2>
         <div id="mobility-plan"></div>
     </section>
 
     <section>
-        <button id="save-session-button">Save Session</button>
+        <button id="submit-session-button">Submit Session</button>
+        <button id="clear-draft-button" class="secondary-button">Clear Draft</button>
     </section>
 
     <section>
@@ -67,6 +70,6 @@
         <div id="bodyweight-history"></div>
     </section>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=7"></script>
 </body>
 </html>
