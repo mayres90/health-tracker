@@ -8,7 +8,19 @@
     <h1>Health Tracker</h1>
 
     <section>
-        <h2>Session Details</h2>
+        <h2>Weekly Check-In</h2>
+
+        <label for="checkin-date">Date</label>
+        <input type="date" id="checkin-date">
+
+        <label for="bodyweight">Bodyweight (kg)</label>
+        <input type="number" id="bodyweight" step="0.1" placeholder="90.0">
+
+        <button id="save-bodyweight-button">Save Bodyweight</button>
+    </section>
+
+    <section>
+        <h2>Workout Session</h2>
 
         <label for="session-date">Date</label>
         <input type="date" id="session-date">
@@ -20,54 +32,24 @@
             <option value="Lower Strength">Lower Strength</option>
             <option value="Upper Volume">Upper Volume</option>
             <option value="Lower Volume">Lower Volume</option>
-            <option value="Run">Run</option>
             <option value="Mobility">Mobility</option>
         </select>
-
-        <label for="bodyweight">Bodyweight (kg)</label>
-        <input type="number" id="bodyweight" step="0.1">
     </section>
 
     <section>
-        <h2>Exercise Log</h2>
-
-        <label for="exercise-name">Exercise</label>
-        <input type="text" id="exercise-name" placeholder="Bench Press">
-
-        <label for="set-number">Set Number</label>
-        <input type="number" id="set-number" placeholder="1">
-
-        <label for="weight">Weight (kg)</label>
-        <input type="number" id="weight" step="0.5" placeholder="80">
-
-        <label for="reps">Reps</label>
-        <input type="number" id="reps" placeholder="5">
-
-        <button id="add-set-button">Add Set</button>
+        <h2>Workout Plan</h2>
+        <div id="workout-plan"></div>
     </section>
 
     <section>
         <h2>Current Session</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Exercise</th>
-                    <th>Set</th>
-                    <th>Weight</th>
-                    <th>Reps</th>
-                </tr>
-            </thead>
-            <tbody id="sets-table-body">
-            </tbody>
-        </table>
-
+        <div id="current-session"></div>
         <button id="save-session-button">Save Session</button>
     </section>
 
     <section>
-        <h2>Saved Sessions</h2>
-        <div id="saved-sessions"></div>
+        <h2>Future Improvements</h2>
+        <p>TODO: Add an editable workout templates page so the program can be changed without editing code.</p>
     </section>
 
     <script src="script.js"></script>
