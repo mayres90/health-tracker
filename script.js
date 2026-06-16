@@ -264,3 +264,9 @@ function loadSimpleList(container, items) {
         container.appendChild(card);
     });
 }
+
+window.addEventListener("load", function () {
+    if (sessionType.value) {
+        sessionType.dispatchEvent(new Event("change"));
+    }
+});
