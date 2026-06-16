@@ -25,12 +25,12 @@ const trainingTemplates = {
 
     "Upper Strength": {
         main: [
-            { name: "Bench Press", prescription: "4 x 3-5" },
-            { name: "Pull-ups", prescription: "4 x 3-5 assisted, bodyweight or weighted" },
-            { name: "Overhead Press", prescription: "3 x 5-6" },
-            { name: "Barbell Row or Chest Supported Row", prescription: "3 x 5-6" },
-            { name: "Push-ups", prescription: "3 sets near max, stop 1-2 reps before failure" },
-            { name: "Front Plank", prescription: "3 x 45-60 sec" }
+            { name: "Bench Press", prescription: "4 x 3-5", sets: 4 },
+            { name: "Pull-ups", prescription: "4 x 3-5 assisted, bodyweight or weighted", sets: 4 },
+            { name: "Overhead Press", prescription: "3 x 5-6", sets: 3 },
+            { name: "Barbell Row or Chest Supported Row", prescription: "3 x 5-6", sets: 3 },
+            { name: "Push-ups", prescription: "3 sets near max, stop 1-2 reps before failure", sets: 3 },
+            { name: "Front Plank", prescription: "3 x 45-60 sec", sets: 3, timed: true }
         ],
         recovery: [
             "Foam roll upper back: 1-2 min",
@@ -69,11 +69,11 @@ const trainingTemplates = {
 
     "Lower Strength": {
         main: [
-            { name: "Back Squat", prescription: "4 x 3-5" },
-            { name: "Romanian Deadlift", prescription: "3 x 5-6" },
-            { name: "Walking Lunges", prescription: "3 x 10 each leg, bodyweight" },
-            { name: "Standing Calf Raise", prescription: "3 x 12-15" },
-            { name: "Ab Wheel Rollout", prescription: "3 x 8-12" }
+            { name: "Back Squat", prescription: "4 x 3-5", sets: 4 },
+            { name: "Romanian Deadlift", prescription: "3 x 5-6", sets: 3 },
+            { name: "Walking Lunges", prescription: "3 x 10 each leg, bodyweight", sets: 3 },
+            { name: "Standing Calf Raise", prescription: "3 x 12-15", sets: 3 },
+            { name: "Ab Wheel Rollout", prescription: "3 x 8-12", sets: 3 }
         ],
         recovery: [
             "Foam roll calves: 1 min each",
@@ -114,12 +114,12 @@ const trainingTemplates = {
 
     "Full Body Volume": {
         main: [
-            { name: "Deadlift", prescription: "3 x 6-8" },
-            { name: "Incline Dumbbell Press", prescription: "3 x 8-12" },
-            { name: "Chin-ups or Lat Pulldown", prescription: "3 x 8-12" },
-            { name: "Dumbbell Row", prescription: "3 x 10-12" },
-            { name: "Dumbbell Shoulder Press", prescription: "3 x 10-12" },
-            { name: "Side Plank", prescription: "3 x 30-45 sec each side" }
+            { name: "Deadlift", prescription: "3 x 6-8", sets: 3 },
+            { name: "Incline Dumbbell Press", prescription: "3 x 8-12", sets: 3 },
+            { name: "Chin-ups or Lat Pulldown", prescription: "3 x 8-12", sets: 3 },
+            { name: "Dumbbell Row", prescription: "3 x 10-12", sets: 3 },
+            { name: "Dumbbell Shoulder Press", prescription: "3 x 10-12", sets: 3 },
+            { name: "Side Plank", prescription: "3 x 30-45 sec each side", sets: 3, timed: true }
         ],
         finisher: [
             "Optional finisher, only if fresh: 2 rounds",
@@ -224,15 +224,31 @@ function loadExerciseCards(container, exercises) {
         const card = document.createElement("div");
         card.className = "exercise-card";
 
+        let setRows = "";
+
+        for (let i = 1; i <= exercise.sets; i++) {
+            setRows += `
+                <div class="set-row">
+                    <span>Set ${i}</span>
+
+                    <input type="number" step="0.5" placeholder="kg">
+
+                    <input type="text" placeholder="${exercise.timed ? "sec" : "reps"}">
+                </div>
+            `;
+        }
+
         card.innerHTML = `
             <h3>${exercise.name}</h3>
             <p>${exercise.prescription}</p>
 
-            <label>Weight / Resistance</label>
-            <input type="text" placeholder="80 kg, bodyweight, band, or leave blank">
+            <div class="set-header">
+                <span>Set</span>
+                <span>Weight</span>
+                <span>${exercise.timed ? "Time" : "Reps"}</span>
+            </div>
 
-            <label>Actual Reps / Time</label>
-            <input type="text" placeholder="5, 5, 5, 5 or 60 sec">
+            ${setRows}
 
             <label>Notes</label>
             <input type="text" placeholder="Optional">
