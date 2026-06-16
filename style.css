@@ -67,6 +67,14 @@ button:hover {
     opacity: 0.9;
 }
 
+.secondary-button {
+    background-color: #555555;
+}
+
+.delete-button {
+    background-color: #8b0000;
+}
+
 .exercise-card {
     background-color: #242424;
     padding: 15px;
@@ -78,12 +86,6 @@ button:hover {
     color: #cccccc;
     margin-top: 5px;
     margin-bottom: 10px;
-}
-
-#run-plan,
-#main-plan,
-#mobility-plan {
-    margin-top: 10px;
 }
 
 .set-header,
@@ -117,6 +119,10 @@ button:hover {
     padding: 10px;
     border-radius: 8px;
     color: #ffffff;
+}
+
+#draft-status {
+    color: #cccccc;
 }
 
 @media (max-width: 600px) {
