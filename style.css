@@ -80,15 +80,9 @@ button:hover {
     margin-bottom: 10px;
 }
 
-#workout-plan {
-    margin-top: 10px;
-}
-
-#current-session {
-    margin-top: 10px;
-}
-
-#saved-sessions {
+#run-plan,
+#main-plan,
+#mobility-plan {
     margin-top: 10px;
 }
 
