@@ -1,109 +1,268 @@
-const workoutTemplates = {
-    "Upper Strength": [
-        { name: "Dead Bug", type: "Core / Warm-up", prescription: "2-3 sets x 8-10 each side" },
-        { name: "Band Pull-Apart", type: "Mobility / Activation", prescription: "2 sets x 15-20" },
-        { name: "Scapular Push-Up", type: "Mobility / Activation", prescription: "2 sets x 8-12" },
-        { name: "Bench Press", type: "Strength", prescription: "4 sets x 4-6 reps" },
-        { name: "Pull-Up or Assisted Pull-Up", type: "Strength", prescription: "4 sets x 4-6 reps" },
-        { name: "Overhead Press", type: "Strength", prescription: "3 sets x 5-8 reps" },
-        { name: "Barbell Row or Dumbbell Row", type: "Strength", prescription: "3 sets x 6-8 reps" },
-        { name: "Farmer Carry", type: "Core / Carry", prescription: "3 rounds x 30-45 seconds" },
-        { name: "Chest Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Lat Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Thoracic Rotation", type: "Cooldown", prescription: "8-10 each side" }
-    ],
+const trainingTemplates = {
+    "Speed Run": {
+        run: [
+            { name: "Speed Run", prescription: "Interval session from your running app" }
+        ],
+        recovery: [
+            "Foam roll calves: 1 min each",
+            "Calf stretch, straight knee: 30 sec each",
+            "Calf stretch, bent knee: 30 sec each",
+            "Hip flexor stretch: 30 sec each"
+        ],
+        ankle: [
+            "Knee-to-wall ankle mobilisation: 2 x 10 each side",
+            "Band ankle eversion: 2 x 15 each side",
+            "Single-leg balance: 2 x 30-60 sec each side"
+        ],
+        shoulder: [
+            "Thoracic rotations: 8 each side",
+            "Foam roll upper back: 1-2 min",
+            "Wall slides: 2 x 8",
+            "Band external rotations: 2 x 10",
+            "Arm reach/protraction: 2 x 8 each side"
+        ]
+    },
 
-    "Lower Strength": [
-        { name: "Glute Bridge", type: "Warm-up", prescription: "2 sets x 10-15" },
-        { name: "Hip Flexor Rock-Back", type: "Mobility", prescription: "2 sets x 8-10 each side" },
-        { name: "Ankle Rocks", type: "Mobility", prescription: "2 sets x 10 each side" },
-        { name: "Back Squat or Front Squat", type: "Strength", prescription: "4 sets x 4-6 reps" },
-        { name: "Romanian Deadlift", type: "Strength", prescription: "3 sets x 6-8 reps" },
-        { name: "Leg Press", type: "Strength", prescription: "3 sets x 8-10 reps" },
-        { name: "Standing Calf Raise", type: "Strength / Tendon", prescription: "3 sets x 10-15 reps" },
-        { name: "Side Plank", type: "Core", prescription: "3 sets x 30-45 seconds each side" },
-        { name: "Calf Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Hamstring Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Peroneal / Outer Calf Stretch", type: "Cooldown", prescription: "60 seconds each side" }
-    ],
+    "Upper Strength": {
+        main: [
+            { name: "Bench Press", prescription: "4 x 3-5" },
+            { name: "Pull-ups", prescription: "4 x 3-5 assisted, bodyweight or weighted" },
+            { name: "Overhead Press", prescription: "3 x 5-6" },
+            { name: "Barbell Row or Chest Supported Row", prescription: "3 x 5-6" },
+            { name: "Push-ups", prescription: "3 sets near max, stop 1-2 reps before failure" },
+            { name: "Front Plank", prescription: "3 x 45-60 sec" }
+        ],
+        recovery: [
+            "Foam roll upper back: 1-2 min",
+            "Pec stretch: 30 sec each",
+            "Lat stretch: 30 sec each"
+        ],
+        shoulder: [
+            "Thoracic rotations: 8 each side",
+            "Wall slides: 2 x 8",
+            "Band external rotations: 2 x 10",
+            "Arm reach/protraction: 2 x 8 each side"
+        ]
+    },
 
-    "Upper Volume": [
-        { name: "Plank", type: "Core / Warm-up", prescription: "2-3 sets x 30-60 seconds" },
-        { name: "Band External Rotation", type: "Mobility / Activation", prescription: "2 sets x 12-15 each side" },
-        { name: "Incline Dumbbell Press", type: "Volume", prescription: "3 sets x 8-12 reps" },
-        { name: "Lat Pulldown", type: "Volume", prescription: "3 sets x 8-12 reps" },
-        { name: "Seated Row", type: "Volume", prescription: "3 sets x 10-12 reps" },
-        { name: "Lateral Raise", type: "Volume", prescription: "3 sets x 12-15 reps" },
-        { name: "Biceps Curl", type: "Volume", prescription: "2-3 sets x 10-15 reps" },
-        { name: "Triceps Pressdown or Dips", type: "Volume", prescription: "2-3 sets x 10-15 reps" },
-        { name: "Hanging Knee Raise or Reverse Crunch", type: "Core", prescription: "3 sets x 8-12 reps" },
-        { name: "Chest Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Shoulder Stretch", type: "Cooldown", prescription: "60 seconds each side" }
-    ],
+    "Easy Run": {
+        run: [
+            { name: "Easy Run", prescription: "Easy aerobic run" }
+        ],
+        recovery: [
+            "Massage ball feet: 1-2 min each",
+            "Foam roll calves: 1 min each",
+            "Glute stretch: 30 sec each"
+        ],
+        ankle: [
+            "Knee-to-wall ankle mobilisation: 2 x 10 each side",
+            "Band ankle eversion: 2 x 15 each side",
+            "Single-leg balance: 2 x 30-60 sec each side"
+        ],
+        shoulder: [
+            "Thoracic rotations: 8 each side",
+            "Wall slides: 2 x 8",
+            "Band external rotations: 2 x 10",
+            "Arm reach/protraction: 2 x 8 each side"
+        ]
+    },
 
-    "Lower Volume": [
-        { name: "Bird Dog", type: "Core / Warm-up", prescription: "2 sets x 8-10 each side" },
-        { name: "World's Greatest Stretch", type: "Mobility", prescription: "1-2 rounds each side" },
-        { name: "Trap Bar Deadlift or Deadlift", type: "Volume / Strength", prescription: "3 sets x 5-8 reps" },
-        { name: "Bulgarian Split Squat", type: "Volume", prescription: "3 sets x 8-10 each side" },
-        { name: "Hamstring Curl", type: "Volume", prescription: "3 sets x 10-12 reps" },
-        { name: "Leg Extension", type: "Volume", prescription: "3 sets x 10-12 reps" },
-        { name: "Seated Calf Raise", type: "Strength / Tendon", prescription: "3 sets x 12-15 reps" },
-        { name: "Pallof Press or Cable Hold", type: "Core", prescription: "3 sets x 10-12 each side" },
-        { name: "Calf Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Hip Flexor Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Hamstring Stretch", type: "Cooldown", prescription: "60 seconds each side" },
-        { name: "Peroneal / Outer Calf Stretch", type: "Cooldown", prescription: "60 seconds each side" }
-    ],
+    "Lower Strength": {
+        main: [
+            { name: "Back Squat", prescription: "4 x 3-5" },
+            { name: "Romanian Deadlift", prescription: "3 x 5-6" },
+            { name: "Walking Lunges", prescription: "3 x 10 each leg, bodyweight" },
+            { name: "Standing Calf Raise", prescription: "3 x 12-15" },
+            { name: "Ab Wheel Rollout", prescription: "3 x 8-12" }
+        ],
+        recovery: [
+            "Foam roll calves: 1 min each",
+            "Foam roll quads: 1 min each",
+            "Hip flexor stretch: 30 sec each",
+            "Hamstring stretch: 30 sec each"
+        ],
+        ankle: [
+            "Knee-to-wall ankle mobilisation: 2 x 10 each side",
+            "Band ankle eversion: 2 x 15 each side",
+            "Single-leg balance: 2 x 30-60 sec each side"
+        ],
+        shoulder: [
+            "Thoracic rotations: 8 each side",
+            "Wall slides: 2 x 8",
+            "Band external rotations: 2 x 10",
+            "Arm reach/protraction: 2 x 8 each side"
+        ]
+    },
 
-    "Mobility": [
-        { name: "Cat-Cow", type: "Spine", prescription: "10 reps" },
-        { name: "Thoracic Rotation", type: "Spine", prescription: "8-10 each side" },
-        { name: "Hip 90/90 Switches", type: "Hips", prescription: "2 sets x 8 each side" },
-        { name: "Couch Stretch", type: "Hips", prescription: "60 seconds each side" },
-        { name: "Hamstring Floss", type: "Posterior Chain", prescription: "10 reps each side" },
-        { name: "Ankle Rocks", type: "Ankles", prescription: "2 sets x 10 each side" },
-        { name: "Calf Stretch", type: "Calves", prescription: "60 seconds each side" },
-        { name: "Peroneal / Outer Calf Stretch", type: "Lower Leg", prescription: "60 seconds each side" },
-        { name: "Dead Bug", type: "Core", prescription: "2 sets x 8-10 each side" },
-        { name: "Side Plank", type: "Core", prescription: "2 sets x 30-45 seconds each side" }
-    ]
+    "Tempo Run": {
+        run: [
+            { name: "Tempo Run", prescription: "Tempo session from your running app" }
+        ],
+        recovery: [
+            "Foam roll calves: 1 min each",
+            "Calf stretch, straight knee: 30 sec each",
+            "Calf stretch, bent knee: 30 sec each",
+            "Quad stretch: 30 sec each"
+        ],
+        shoulder: [
+            "Thoracic rotations: 8 each side",
+            "Wall slides: 2 x 8",
+            "Band external rotations: 2 x 10",
+            "Arm reach/protraction: 2 x 8 each side"
+        ]
+    },
+
+    "Full Body Volume": {
+        main: [
+            { name: "Deadlift", prescription: "3 x 6-8" },
+            { name: "Incline Dumbbell Press", prescription: "3 x 8-12" },
+            { name: "Chin-ups or Lat Pulldown", prescription: "3 x 8-12" },
+            { name: "Dumbbell Row", prescription: "3 x 10-12" },
+            { name: "Dumbbell Shoulder Press", prescription: "3 x 10-12" },
+            { name: "Side Plank", prescription: "3 x 30-45 sec each side" }
+        ],
+        finisher: [
+            "Optional finisher, only if fresh: 2 rounds",
+            "10 Goblet Squats",
+            "10 Push-ups",
+            "10 Rows"
+        ],
+        recovery: [
+            "Foam roll upper back: 1-2 min",
+            "Pec stretch: 30 sec each",
+            "Thoracic rotations: 5 each side"
+        ],
+        shoulder: [
+            "Thoracic rotations: 8 each side",
+            "Wall slides: 2 x 8",
+            "Band external rotations: 2 x 10",
+            "Arm reach/protraction: 2 x 8 each side"
+        ]
+    },
+
+    "Long Run + Mobility": {
+        run: [
+            { name: "Long Run", prescription: "Long easy run" }
+        ],
+        recovery: [
+            "Foam roll calves: 1-2 min each",
+            "Foam roll quads: 1 min each",
+            "Foam roll glutes: 1 min total",
+            "Massage ball feet: 1-1.5 min each",
+            "Calf stretch, straight knee: 30 sec each",
+            "Calf stretch, bent knee: 30 sec each",
+            "Hip flexor stretch: 30 sec each",
+            "Glute stretch: 30 sec each",
+            "Hamstring stretch: 30 sec each"
+        ],
+        shoulder: [
+            "Thoracic rotations: 8 each side",
+            "Band external rotations: 2 x 10",
+            "Wall slides: 2 x 8"
+        ]
+    }
 };
 
-const workoutTypeSelect = document.getElementById("workout-type");
-const workoutPlanDiv = document.getElementById("workout-plan");
-const currentSessionDiv = document.getElementById("current-session");
+const sessionType = document.getElementById("session-type");
+const warmupPlan = document.getElementById("warmup-plan");
+const mainPlan = document.getElementById("main-plan");
+const mobilityPlan = document.getElementById("mobility-plan");
+const runPlan = document.getElementById("run-plan");
 
-workoutTypeSelect.addEventListener("change", function () {
-    const selectedWorkout = workoutTypeSelect.value;
-    workoutPlanDiv.innerHTML = "";
-    currentSessionDiv.innerHTML = "";
+sessionType.addEventListener("change", function () {
+    clearPlans();
 
-    if (!selectedWorkout) {
-        return;
-    }
+    const selected = sessionType.value;
+    if (!selected) return;
 
-    const exercises = workoutTemplates[selectedWorkout];
+    const template = trainingTemplates[selected];
 
-    exercises.forEach((exercise, index) => {
-        const exerciseCard = document.createElement("div");
-        exerciseCard.className = "exercise-card";
+    if (template.run) loadRunCards(runPlan, template.run);
+    if (template.main) loadExerciseCards(mainPlan, template.main);
+    if (template.finisher) loadSimpleList(mainPlan, template.finisher);
+    if (template.recovery) loadSimpleList(mobilityPlan, template.recovery);
+    if (template.ankle) loadSimpleList(mobilityPlan, template.ankle);
+    if (template.shoulder) loadSimpleList(mobilityPlan, template.shoulder);
+});
 
-        exerciseCard.innerHTML = `
+function clearPlans() {
+    warmupPlan.innerHTML = "";
+    mainPlan.innerHTML = "";
+    mobilityPlan.innerHTML = "";
+    runPlan.innerHTML = "";
+}
+
+function loadRunCards(container, runs) {
+    runs.forEach(run => {
+        const card = document.createElement("div");
+        card.className = "exercise-card";
+
+        card.innerHTML = `
+            <h3>${run.name}</h3>
+            <p>${run.prescription}</p>
+
+            <label>Distance (km)</label>
+            <input type="number" step="0.01" placeholder="8.0">
+
+            <label>Time</label>
+            <input type="text" placeholder="45:30">
+
+            <label>Average Pace</label>
+            <input type="text" placeholder="5:41 / km">
+
+            <label>Average Heart Rate</label>
+            <input type="number" placeholder="145">
+
+            <label>Notes</label>
+            <input type="text" placeholder="How did it feel?">
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+function loadExerciseCards(container, exercises) {
+    exercises.forEach(exercise => {
+        const card = document.createElement("div");
+        card.className = "exercise-card";
+
+        card.innerHTML = `
             <h3>${exercise.name}</h3>
-            <p>${exercise.type}</p>
             <p>${exercise.prescription}</p>
 
             <label>Weight / Resistance</label>
-            <input type="text" id="weight-${index}" placeholder="80 kg, bodyweight, band, or leave blank">
+            <input type="text" placeholder="80 kg, bodyweight, band, or leave blank">
 
             <label>Actual Reps / Time</label>
-            <input type="text" id="reps-${index}" placeholder="5, 5, 5, 5 or 60 sec">
+            <input type="text" placeholder="5, 5, 5, 5 or 60 sec">
 
             <label>Notes</label>
-            <input type="text" id="notes-${index}" placeholder="Optional">
+            <input type="text" placeholder="Optional">
         `;
 
-        workoutPlanDiv.appendChild(exerciseCard);
+        container.appendChild(card);
     });
-});
+}
+
+function loadSimpleList(container, items) {
+    items.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "exercise-card";
+
+        card.innerHTML = `
+            <p>${item}</p>
+
+            <label>Completed?</label>
+            <select>
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="Skipped">Skipped</option>
+            </select>
+
+            <label>Notes</label>
+            <input type="text" placeholder="Optional">
+        `;
+
+        container.appendChild(card);
+    });
+}
