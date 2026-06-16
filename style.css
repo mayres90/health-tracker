@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: white;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -13,22 +13,42 @@ h1 {
 }
 
 h2 {
-    margin-top: 30px;
+    margin-top: 0;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+section {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 
-input {
+input,
+select {
     width: 100%;
     padding: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 8px;
     border: none;
     box-sizing: border-box;
     font-size: 16px;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+input::placeholder {
+    color: #999999;
 }
 
 button {
@@ -38,8 +58,55 @@ button {
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    background-color: #3a7bfd;
+    color: white;
+    margin-top: 10px;
 }
 
 button:hover {
     opacity: 0.9;
+}
+
+.exercise-card {
+    background-color: #242424;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.exercise-card p {
+    color: #cccccc;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#workout-plan {
+    margin-top: 10px;
+}
+
+#current-session {
+    margin-top: 10px;
+}
+
+#saved-sessions {
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 18px;
+    }
+
+    input,
+    select {
+        font-size: 16px;
+    }
 }
