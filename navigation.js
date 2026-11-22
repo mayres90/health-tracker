@@ -1,6 +1,6 @@
 // Page navigation is presentation-only. Existing workout and cloud storage stay unchanged.
 (function () {
-  const allowed = ['workout', 'progress', 'history', 'settings'];
+  const allowed = ['workout', 'progress', 'history', 'program', 'settings'];
   const tabs = [...document.querySelectorAll('.nav-tab')];
   function showPage(page, save = true) {
     if (!allowed.includes(page)) page = 'workout';

@@ -100,8 +100,9 @@ async function onCloudAuth(user) {
     cloudAuth.hidden = !!user;
     cloudTools.hidden = !user;
     cloudReady = false;
-    if (!user) { statusCloud('Not signed in. Workouts remain stored in this browser.'); return; }
+    if (!user) { statusCloud('Not signed in. Workouts remain stored in this browser.'); if (typeof programAuthChanged === 'function') programAuthChanged(null); return; }
     document.getElementById('cloud-email-display').textContent = user.email;
+    if (typeof programAuthChanged === 'function') await programAuthChanged(user);
     try {
         const [remoteSessions, remoteWeights] = await Promise.all([
             db.from('workout_sessions').select('id', {count:'exact',head:true}),

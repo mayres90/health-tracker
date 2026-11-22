@@ -9,10 +9,10 @@
 <link href="manifest.webmanifest" rel="manifest"/>
 <link href="icon.svg" rel="icon" type="image/svg+xml"/>
 <title>Health Tracker</title>
-<link href="style.css?v=11" rel="stylesheet"/>
+<link href="style.css?v=12" rel="stylesheet"/>
 </head>
 <body>
-<h1>Health Tracker</h1><p aria-live="polite" class="header-status" id="header-sync-status">Cloud sync available in Settings</p><nav aria-label="Main navigation" class="app-nav"><button aria-controls="view-workout" class="nav-tab" data-view="workout" type="button">Workout</button><button aria-controls="view-progress" class="nav-tab" data-view="progress" type="button">Progress</button><button aria-controls="view-history" class="nav-tab" data-view="history" type="button">History</button><button aria-controls="view-settings" class="nav-tab" data-view="settings" type="button">Settings</button></nav><main class="app-view" data-page="workout" id="view-workout"><section>
+<h1>Health Tracker</h1><p aria-live="polite" class="header-status" id="header-sync-status">Cloud sync available in Settings</p><nav aria-label="Main navigation" class="app-nav"><button aria-controls="view-workout" class="nav-tab" data-view="workout" type="button">Workout</button><button aria-controls="view-progress" class="nav-tab" data-view="progress" type="button">Progress</button><button aria-controls="view-history" class="nav-tab" data-view="history" type="button">History</button><button aria-controls="view-program" class="nav-tab" data-view="program" type="button">Program</button><button aria-controls="view-settings" class="nav-tab" data-view="settings" type="button">Settings</button></nav><main class="app-view" data-page="workout" id="view-workout"><section>
 <h2>Weekly Check-In</h2>
 <label for="checkin-date">Date</label>
 <input autocomplete="off" data-lpignore="true" data-1p-ignore="true" id="checkin-date" type="date"/>
@@ -74,7 +74,7 @@
 </section><section>
 <h2>Bodyweight History</h2>
 <div id="bodyweight-history"></div>
-</section></main><main class="app-view" data-page="settings" hidden="" id="view-settings"><h2 class="page-heading">Settings</h2><section>
+</section></main><main class="app-view" data-page="program" hidden id="view-program"><h2 class="page-heading">Workout Program</h2><section><p class="metric-note">Changes sync to your account and apply to future sessions only. Your completed workout history is unchanged.</p><p id="program-status" role="status">Sign in to edit your program.</p><label for="program-session">Workout</label><select id="program-session"></select><div class="program-actions"><button type="button" id="program-new-session">Add workout</button><button type="button" class="secondary-button" id="program-rename-session">Rename</button><button type="button" class="secondary-button" id="program-delete-session">Delete workout</button></div><div id="program-editor"></div><button type="button" id="program-save">Save Program to Cloud</button></section><section><h2>Program Backup</h2><button type="button" id="program-export">Export Program (JSON)</button><label for="program-import">Import Program (JSON)</label><input id="program-import" type="file" accept=".json,application/json"/><button type="button" class="secondary-button" id="program-defaults">Restore Original Program</button><p class="metric-note">Import and restore require saving to cloud. Export a copy before making major changes.</p></section></main><main class="app-view" data-page="settings" hidden="" id="view-settings"><h2 class="page-heading">Settings</h2><section>
 <h2>Cloud Sync</h2>
 <p id="cloud-status" role="status">Connecting...</p>
 <div id="cloud-auth">
@@ -109,8 +109,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-<script src="script.js?v=11"></script>
-<script src="cloud.js?v=11"></script>
-<script src="navigation.js?v=11"></script>
-<script src="records.js?v=11"></script></body>
+<script src="script.js?v=12"></script>
+<script src="cloud.js?v=12"></script>
+<script src="navigation.js?v=12"></script>
+<script src="records.js?v=12"></script>
+<script src="program.js?v=12"></script></body>
 </html>
