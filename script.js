@@ -342,15 +342,15 @@ function loadRunCards(container, runs) {
             <h3>${run.name}</h3>
             <p>${run.prescription}</p>
             <label>Distance (km)</label>
-            <input class="run-distance" type="number" step="0.01" placeholder="8.0">
+            <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="run-distance" type="number" step="0.01" placeholder="8.0">
             <label>Time</label>
-            <input class="run-time" type="text" placeholder="45:30">
+            <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="run-time" type="text" placeholder="45:30">
             <label>Average Pace</label>
-            <input class="run-pace" type="text" placeholder="5:41 / km">
+            <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="run-pace" type="text" placeholder="5:41 / km">
             <label>Average Heart Rate</label>
-            <input class="run-hr" type="number" placeholder="145">
+            <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="run-hr" type="number" placeholder="145">
             <label>Notes</label>
-            <input class="run-notes" type="text" placeholder="How did it feel?">
+            <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="run-notes" type="text" placeholder="How did it feel?">
         `;
 
         container.appendChild(card);
@@ -384,8 +384,8 @@ function loadExerciseCards(container, exercises) {
             setRows += `
                 <div class="set-row">
                     <span>Set ${i}</span>
-                    <input class="set-weight" type="number" step="0.5" inputmode="decimal" placeholder="kg">
-                    <input class="set-reps" type="number" min="0" step="1" inputmode="numeric" placeholder="${exercise.timed ? "sec" : "reps"}">
+                    <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="set-weight" type="number" step="0.5" inputmode="decimal" placeholder="kg">
+                    <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="set-reps" type="number" min="0" step="1" inputmode="numeric" placeholder="${exercise.timed ? "sec" : "reps"}">
                 </div>
             `;
         }
@@ -403,7 +403,7 @@ function loadExerciseCards(container, exercises) {
             </div>
             ${setRows}
             <label>Notes</label>
-            <input class="exercise-notes" type="text" placeholder="Optional">
+            <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="exercise-notes" type="text" placeholder="Optional">
         `;
 
         const copyButton = card.querySelector('.copy-last');
@@ -429,13 +429,13 @@ function loadSimpleList(container, items) {
         card.innerHTML = `
             <p>${item}</p>
             <label>Completed?</label>
-            <select class="mobility-status">
+            <select autocomplete="off" class="mobility-status">
                 <option value="">Select</option>
                 <option value="Yes">Yes</option>
                 <option value="Skipped">Skipped</option>
             </select>
             <label>Notes</label>
-            <input class="mobility-notes" type="text" placeholder="Optional">
+            <input autocomplete="off" autocapitalize="off" data-lpignore="true" data-1p-ignore="true" class="mobility-notes" type="text" placeholder="Optional">
         `;
 
         container.appendChild(card);

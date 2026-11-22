@@ -9,23 +9,23 @@
 <link href="manifest.webmanifest" rel="manifest"/>
 <link href="icon.svg" rel="icon" type="image/svg+xml"/>
 <title>Health Tracker</title>
-<link href="style.css?v=10" rel="stylesheet"/>
+<link href="style.css?v=11" rel="stylesheet"/>
 </head>
 <body>
 <h1>Health Tracker</h1><p aria-live="polite" class="header-status" id="header-sync-status">Cloud sync available in Settings</p><nav aria-label="Main navigation" class="app-nav"><button aria-controls="view-workout" class="nav-tab" data-view="workout" type="button">Workout</button><button aria-controls="view-progress" class="nav-tab" data-view="progress" type="button">Progress</button><button aria-controls="view-history" class="nav-tab" data-view="history" type="button">History</button><button aria-controls="view-settings" class="nav-tab" data-view="settings" type="button">Settings</button></nav><main class="app-view" data-page="workout" id="view-workout"><section>
 <h2>Weekly Check-In</h2>
 <label for="checkin-date">Date</label>
-<input id="checkin-date" type="date"/>
+<input autocomplete="off" data-lpignore="true" data-1p-ignore="true" id="checkin-date" type="date"/>
 <label for="bodyweight">Bodyweight (kg)</label>
-<input id="bodyweight" placeholder="90.0" step="0.1" type="number"/>
+<input autocomplete="off" data-lpignore="true" data-1p-ignore="true" id="bodyweight" placeholder="90.0" step="0.1" type="number"/>
 <button id="save-bodyweight-button">Save Bodyweight</button>
 </section><section>
 <h2>Training Session</h2>
 <p id="draft-status">No draft loaded.</p>
 <label for="session-date">Date</label>
-<input id="session-date" type="date"/>
+<input autocomplete="off" data-lpignore="true" data-1p-ignore="true" id="session-date" type="date"/>
 <label for="session-type">Session Type</label>
-<select id="session-type">
+<select autocomplete="off" data-lpignore="true" data-1p-ignore="true" id="session-type">
 <option value="">Select session type</option>
 <option value="Speed Run">Day 1 - Speed Run</option>
 <option value="Upper Strength">Day 2 - Upper Strength</option>
@@ -65,7 +65,7 @@
 <h3>Bodyweight</h3><div class="chart-wrap"><canvas id="weight-chart"></canvas></div>
 <h3>Weekly Running Distance</h3><div class="chart-wrap"><canvas id="run-chart"></canvas></div>
 <h3>Strength Progression</h3>
-<label for="strength-exercise">Exercise</label><select id="strength-exercise"></select>
+<label for="strength-exercise">Exercise</label><select autocomplete="off" data-lpignore="true" data-1p-ignore="true" id="strength-exercise"></select>
 <div class="chart-wrap"><canvas id="strength-chart"></canvas></div>
 <h3>Training Consistency</h3><div class="chart-wrap"><canvas id="consistency-chart"></canvas></div>
 </section></main><main class="app-view" data-page="history" hidden="" id="view-history"><h2 class="page-heading">Training History</h2><section>
@@ -109,8 +109,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-<script src="script.js?v=10"></script>
-<script src="cloud.js?v=10"></script>
-<script src="navigation.js?v=10"></script>
-<script src="records.js?v=10"></script></body>
+<script src="script.js?v=11"></script>
+<script src="cloud.js?v=11"></script>
+<script src="navigation.js?v=11"></script>
+<script src="records.js?v=11"></script></body>
 </html>
