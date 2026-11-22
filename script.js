@@ -311,6 +311,7 @@ function restoreMobilityDraft(mobilityItems) {
 }
 
 function clearDraft() {
+    clearTimeout(draftTimer);
     localStorage.removeItem("currentDraftSession");
 
     sessionDate.value = "";
@@ -320,7 +321,7 @@ function clearDraft() {
     draftStatus.textContent = "Draft cleared.";
 }
 
-function submitSession() {
+async function submitSession() {
     if (!sessionDate.value || !sessionType.value) {
         alert("Enter a date and select a session type.");
         return;
@@ -336,6 +337,10 @@ function submitSession() {
     };
 
     const sessions = JSON.parse(localStorage.getItem("trainingSessions")) || [];
+    if (typeof cloudUser !== 'undefined' && cloudUser && !cloudReady) {
+        alert('Cloud account is not ready. Import your existing phone data first.'); return;
+    }
+    try { await cloudSaveWorkout(session); } catch (error) { alert('Cloud save failed: ' + error.message); return; }
     sessions.push(session);
 
     localStorage.setItem("trainingSessions", JSON.stringify(sessions));
@@ -442,15 +447,18 @@ function renderSavedSessions() {
     });
 }
 
-function deleteSession(sessionId) {
+async function deleteSession(sessionId) {
     const sessions = JSON.parse(localStorage.getItem("trainingSessions")) || [];
+    if (!confirm('Delete this session?')) return;
+    if (typeof cloudUser !== 'undefined' && cloudUser && !cloudReady) { alert('Import your existing data first.'); return; }
+    try { await cloudDeleteWorkout(sessionId); } catch (error) { alert('Cloud deletion failed: ' + error.message); return; }
     const updatedSessions = sessions.filter(session => session.id !== sessionId);
 
     localStorage.setItem("trainingSessions", JSON.stringify(updatedSessions));
     renderSavedSessions();
 }
 
-function saveBodyweight() {
+async function saveBodyweight() {
     if (!checkinDate.value || !bodyweightInput.value) {
         alert("Enter a date and bodyweight.");
         return;
@@ -463,6 +471,8 @@ function saveBodyweight() {
     };
 
     const bodyweights = JSON.parse(localStorage.getItem("bodyweights")) || [];
+    if (typeof cloudUser !== 'undefined' && cloudUser && !cloudReady) { alert('Import your existing data first.'); return; }
+    try { await cloudSaveWeight(entry); } catch (error) { alert('Cloud save failed: ' + error.message); return; }
     bodyweights.push(entry);
 
     localStorage.setItem("bodyweights", JSON.stringify(bodyweights));

@@ -8,6 +8,23 @@
     <h1>Health Tracker</h1>
 
     <section>
+        <h2>Cloud Sync</h2>
+        <p id="cloud-status" role="status">Connecting...</p>
+        <div id="cloud-auth">
+            <label for="cloud-email">Email</label><input id="cloud-email" type="email" autocomplete="email">
+            <label for="cloud-password">Password</label><input id="cloud-password" type="password" autocomplete="current-password">
+            <button id="cloud-signup" type="button">Create Account</button>
+            <button id="cloud-signin" type="button">Sign In</button>
+        </div>
+        <div id="cloud-tools" hidden>
+            <p>Signed in as <span id="cloud-email-display"></span></p>
+            <button id="cloud-import" type="button">Import This Browser's Existing Data</button>
+            <button id="cloud-refresh" type="button">Refresh From Cloud</button>
+            <button id="cloud-signout" type="button">Sign Out</button>
+            <p>Import on the phone containing your existing workouts first. Keep your downloaded JSON backup.</p>
+        </div>
+    </section>
+    <section>
         <h2>Weekly Check-In</h2>
 
         <label for="checkin-date">Date</label>
@@ -76,6 +93,8 @@
         <div id="bodyweight-history"></div>
     </section>
 
-    <script src="script.js?v=8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="script.js?v=9"></script>
+    <script src="cloud.js?v=9"></script>
 </body>
 </html>
