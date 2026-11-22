@@ -493,3 +493,34 @@ window.addEventListener("load", function () {
     renderBodyweightHistory();
     restoreDraft();
 });
+
+
+// Download existing browser data without modifying it.
+document.getElementById("export-data-button").addEventListener("click", function () {
+    const keys = ["trainingSessions", "bodyweights", "currentDraftSession"];
+    const backup = {
+        format: "health-tracker-localstorage-backup",
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        origin: window.location.origin,
+        data: {}
+    };
+    for (const key of keys) {
+        const raw = localStorage.getItem(key);
+        if (raw === null) {
+            backup.data[key] = null;
+        } else {
+            try { backup.data[key] = JSON.parse(raw); }
+            catch (error) { backup.data[key] = raw; }
+        }
+    }
+    const file = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(file);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "health-tracker-backup-" + new Date().toISOString().slice(0, 10) + ".json";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
