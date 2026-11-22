@@ -9,7 +9,7 @@
 <link href="manifest.webmanifest" rel="manifest"/>
 <link href="icon.svg" rel="icon" type="image/svg+xml"/>
 <title>Health Tracker</title>
-<link href="style.css?v=9" rel="stylesheet"/>
+<link href="style.css?v=10" rel="stylesheet"/>
 </head>
 <body>
 <h1>Health Tracker</h1><p aria-live="polite" class="header-status" id="header-sync-status">Cloud sync available in Settings</p><nav aria-label="Main navigation" class="app-nav"><button aria-controls="view-workout" class="nav-tab" data-view="workout" type="button">Workout</button><button aria-controls="view-progress" class="nav-tab" data-view="progress" type="button">Progress</button><button aria-controls="view-history" class="nav-tab" data-view="history" type="button">History</button><button aria-controls="view-settings" class="nav-tab" data-view="settings" type="button">Settings</button></nav><main class="app-view" data-page="workout" id="view-workout"><section>
@@ -53,6 +53,15 @@
 </section></main><main class="app-view" data-page="progress" hidden="" id="view-progress"><section>
 <h2>Progress Dashboard</h2>
 <p id="dashboard-summary"></p>
+<h3>Personal Records</h3>
+<div id="personal-records" class="records-grid" aria-live="polite"></div>
+<h3>Strength Records</h3>
+<p class="metric-note">Heaviest recorded external load and estimated one-repetition maximum (1RM). Bodyweight exercises and timed holds are excluded from the 1RM estimate.</p>
+<div class="table-scroll"><table class="records-table"><thead><tr><th>Exercise</th><th>Best weight</th><th>Reps</th><th>Est. 1RM</th><th>Date</th></tr></thead><tbody id="strength-records-body"></tbody></table></div>
+<h3>Weekly Running Performance</h3>
+<p class="metric-note">Average pace is calculated using total distance divided by total moving time. Runs without valid time are excluded from the pace calculation.</p>
+<div class="table-scroll"><table class="records-table"><thead><tr><th>Week commencing</th><th>Distance</th><th>Avg pace</th><th>Avg speed</th></tr></thead><tbody id="running-weeks-body"></tbody></table></div>
+<h3>Weekly Average Running Pace</h3><div class="chart-wrap"><canvas id="pace-chart"></canvas></div>
 <h3>Bodyweight</h3><div class="chart-wrap"><canvas id="weight-chart"></canvas></div>
 <h3>Weekly Running Distance</h3><div class="chart-wrap"><canvas id="run-chart"></canvas></div>
 <h3>Strength Progression</h3>
@@ -100,7 +109,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-<script src="script.js?v=9"></script>
-<script src="cloud.js?v=9"></script>
-<script src="navigation.js?v=9"></script></body>
+<script src="script.js?v=10"></script>
+<script src="cloud.js?v=10"></script>
+<script src="navigation.js?v=10"></script>
+<script src="records.js?v=10"></script></body>
 </html>

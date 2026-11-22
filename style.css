@@ -165,3 +165,17 @@ body > h1 { margin: 12px 0 6px; text-align: left; font-size: 1.65rem; }
  .app-nav .nav-tab { min-height: 52px; padding: 10px 3px; font-size: 13px; }
  .chart-wrap { height: 230px; }
 }
+
+/* v10 reporting */
+.records-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px;margin:12px 0 24px}
+.record-tile{background:#252b36;border:1px solid #394151;border-radius:10px;padding:14px;min-width:0}
+.record-tile .record-label{font-size:.82rem;color:#b4c0d1;margin:0 0 7px}
+.record-tile .record-value{font-size:1.4rem;font-weight:700;margin:0 0 4px;overflow-wrap:anywhere}
+.record-tile .record-detail{font-size:.8rem;color:#aab5c4;margin:0}
+.table-scroll{overflow-x:auto;margin:10px 0 26px;-webkit-overflow-scrolling:touch}
+.records-table{border-collapse:collapse;width:100%;min-width:510px;font-size:.88rem;text-align:left}
+.records-table th,.records-table td{padding:11px 10px;border-bottom:1px solid #394151;white-space:nowrap}
+.records-table th{color:#b4c0d1;background:#252b36;font-weight:600}
+.records-table tbody tr:nth-child(even){background:#222832}
+.metric-note{font-size:.85rem;color:#b4c0d1;line-height:1.5}
+@media(max-width:600px){.records-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.record-tile{padding:11px}.record-tile .record-value{font-size:1.15rem}}
