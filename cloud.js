@@ -65,6 +65,7 @@ async function cloudRefresh() {
     localStorage.setItem('bodyweights', JSON.stringify(bodyweights));
     renderSavedSessions();
     renderBodyweightHistory();
+    renderDashboard();
     statusCloud(`Connected. ${sessions.length} workouts and ${bodyweights.length} bodyweight entries synced.`);
 }
 async function cloudImport() {
@@ -101,12 +102,26 @@ async function onCloudAuth(user) {
     cloudReady = false;
     if (!user) { statusCloud('Not signed in. Workouts remain stored in this browser.'); return; }
     document.getElementById('cloud-email-display').textContent = user.email;
-    if (localStorage.getItem('cloudMigrated:' + user.id) === 'yes') {
-        cloudReady = true;
-        try { await cloudRefresh(); } catch (error) { cloudReady = false; statusCloud('Sync error: ' + error.message); }
-    } else {
-        statusCloud('Signed in. First import your existing workouts from Chrome on your phone. Do not submit new workouts on another device yet.');
-    }
+    try {
+        const [remoteSessions, remoteWeights] = await Promise.all([
+            db.from('workout_sessions').select('id', {count:'exact',head:true}),
+            db.from('bodyweight_entries').select('id', {count:'exact',head:true})
+        ]);
+        if (remoteSessions.error) throw remoteSessions.error;
+        if (remoteWeights.error) throw remoteWeights.error;
+        const hasRemote = (remoteSessions.count || 0) + (remoteWeights.count || 0) > 0;
+        const hasLocal = readLocal('trainingSessions').length + readLocal('bodyweights').length > 0;
+        if (hasRemote) {
+            cloudReady = true;
+            await cloudRefresh();
+            localStorage.setItem('cloudMigrated:' + user.id, 'yes');
+        } else if (hasLocal) {
+            statusCloud('Signed in. Cloud is empty. Import this browser’s existing data before continuing.');
+        } else {
+            cloudReady = true;
+            statusCloud('Connected. No workouts yet.');
+        }
+    } catch (error) {cloudReady = false; statusCloud('Sync error: '+error.message);}
 }
 document.getElementById('cloud-signin').addEventListener('click', async () => {
     const email = document.getElementById('cloud-email').value.trim();

@@ -143,3 +143,5 @@ button:hover {
         font-size: 16px;
     }
 }
+
+.chart-wrap{height:245px;position:relative;margin-bottom:24px} .exercise-card button.copy-last{margin-bottom:12px} .set-row{grid-template-columns:58px minmax(0,1fr) minmax(0,1fr)} .set-header{grid-template-columns:58px minmax(0,1fr) minmax(0,1fr)} .exercise-card{overflow-wrap:anywhere} @media(max-width:600px){body{padding:10px}section{padding:14px;margin-bottom:14px}.set-row{gap:6px}.set-row input{min-width:0;padding:12px 8px}h1{font-size:1.7rem}}

@@ -1,62 +1,272 @@
 const trainingTemplates = {
     "Speed Run": {
-        run: [{ name: "Speed Run", prescription: "Interval session from your running app" }],
-        recovery: ["Foam roll calves: 1 min each", "Calf stretch, straight knee: 30 sec each", "Calf stretch, bent knee: 30 sec each", "Hip flexor stretch: 30 sec each"],
-        ankle: ["Knee-to-wall ankle mobilisation: 2 x 10 each side", "Band ankle eversion: 2 x 15 each side", "Single-leg balance: 2 x 30-60 sec each side"],
-        shoulder: ["Thoracic rotations: 8 each side", "Foam roll upper back: 1-2 min", "Wall slides: 2 x 8", "Band external rotations: 2 x 10", "Arm reach/protraction: 2 x 8 each side"]
+        "run": [
+            {
+                "name": "Speed Run",
+                "prescription": "Speed session as prescribed by your running app"
+            }
+        ],
+        "recovery": [
+            "Shoulder pendulums: 1 × 15 each direction",
+            "Side arm circles: 2 × 15",
+            "Wall crawls: 2 × 15",
+            "Thoracic rotations: 1 × 8 each side",
+            "Knee to wall: 1 × 10 each leg",
+            "Straight knee calf stretch: 1 × 30 sec each",
+            "Bent knee calf stretch: 1 × 30 sec each",
+            "Calf foam rolling: 1 × 60 sec each",
+            "Foot massage ball: 1 × 60 sec each"
+        ],
+        "additional": [
+            {
+                "name": "Standing calf raises",
+                "sets": 2,
+                "prescription": "2 × 15"
+            },
+            {
+                "name": "Toe raises",
+                "sets": 2,
+                "prescription": "2 × 15"
+            }
+        ]
     },
     "Upper Strength": {
-        main: [
-            { name: "Bench Press", prescription: "4 x 3-5", sets: 4 },
-            { name: "Pull-ups", prescription: "4 x 3-5 assisted, bodyweight or weighted", sets: 4 },
-            { name: "Overhead Press", prescription: "3 x 5-6", sets: 3 },
-            { name: "Barbell Row or Chest Supported Row", prescription: "3 x 5-6", sets: 3 },
-            { name: "Push-ups", prescription: "3 sets near max, stop 1-2 reps before failure", sets: 3 },
-            { name: "Front Plank", prescription: "3 x 45-60 sec", sets: 3, timed: true }
+        "main": [
+            {
+                "name": "Bench Press",
+                "sets": 4,
+                "prescription": "4 × 3–5"
+            },
+            {
+                "name": "Pull-ups",
+                "sets": 4,
+                "prescription": "4 × 3–5",
+                "bodyweight": true
+            },
+            {
+                "name": "Overhead Press",
+                "sets": 3,
+                "prescription": "3 × 5–6"
+            },
+            {
+                "name": "Barbell Row",
+                "sets": 3,
+                "prescription": "3 × 5–6"
+            },
+            {
+                "name": "Push-ups",
+                "sets": 3,
+                "prescription": "3 × near maximum",
+                "bodyweight": true
+            },
+            {
+                "name": "Front Plank",
+                "sets": 3,
+                "prescription": "3 × 45–60 sec",
+                "timed": true
+            }
         ],
-        recovery: ["Foam roll upper back: 1-2 min", "Pec stretch: 30 sec each", "Lat stretch: 30 sec each"],
-        shoulder: ["Thoracic rotations: 8 each side", "Wall slides: 2 x 8", "Band external rotations: 2 x 10", "Arm reach/protraction: 2 x 8 each side"]
+        "recovery": [
+            "Shoulder pendulums: 1 × 15 each direction",
+            "Side arm circles: 2 × 15",
+            "Wall crawls: 2 × 15",
+            "Thoracic rotations: 1 × 8 each side",
+            "Knee to wall: 1 × 10 each leg",
+            "Straight knee calf stretch: 1 × 30 sec each",
+            "Bent knee calf stretch: 1 × 30 sec each",
+            "Pec stretch: 2 × 30 sec",
+            "Lat stretch: 2 × 30 sec",
+            "Mid-deltoid stretch: 2 × 30 sec"
+        ],
+        "additional": [
+            {
+                "name": "Band External Rotation",
+                "sets": 2,
+                "prescription": "2 × 12–15"
+            }
+        ]
     },
     "Easy Run": {
-        run: [{ name: "Easy Run", prescription: "Easy aerobic run" }],
-        recovery: ["Massage ball feet: 1-2 min each", "Foam roll calves: 1 min each", "Glute stretch: 30 sec each"],
-        ankle: ["Knee-to-wall ankle mobilisation: 2 x 10 each side", "Band ankle eversion: 2 x 15 each side", "Single-leg balance: 2 x 30-60 sec each side"],
-        shoulder: ["Thoracic rotations: 8 each side", "Wall slides: 2 x 8", "Band external rotations: 2 x 10", "Arm reach/protraction: 2 x 8 each side"]
+        "run": [
+            {
+                "name": "Easy Run",
+                "prescription": "Easy aerobic run as prescribed by your running app"
+            }
+        ],
+        "recovery": [
+            "Shoulder pendulums: 1 × 15 each direction",
+            "Side arm circles: 2 × 15",
+            "Wall crawls: 2 × 15",
+            "Thoracic rotations: 1 × 8 each side",
+            "Knee to wall: 1 × 10 each leg",
+            "Straight knee calf stretch: 1 × 30 sec each",
+            "Bent knee calf stretch: 1 × 30 sec each",
+            "Calf foam rolling: 1 × 60 sec each",
+            "Foot massage ball: 1 × 60 sec each",
+            "Glute stretch: 1 × 30 sec each"
+        ],
+        "additional": [
+            {
+                "name": "Star Excursion Balance",
+                "sets": 2,
+                "prescription": "2 × 45 sec each leg",
+                "timed": true
+            }
+        ]
     },
     "Lower Strength": {
-        main: [
-            { name: "Back Squat", prescription: "4 x 3-5", sets: 4 },
-            { name: "Romanian Deadlift", prescription: "3 x 5-6", sets: 3 },
-            { name: "Walking Lunges", prescription: "3 x 10 each leg, bodyweight", sets: 3 },
-            { name: "Standing Calf Raise", prescription: "3 x 12-15", sets: 3 },
-            { name: "Ab Wheel Rollout", prescription: "3 x 8-12", sets: 3 }
+        "main": [
+            {
+                "name": "Back Squat",
+                "sets": 4,
+                "prescription": "4 × 3–5"
+            },
+            {
+                "name": "Romanian Deadlift",
+                "sets": 3,
+                "prescription": "3 × 5–6"
+            },
+            {
+                "name": "Walking Lunges",
+                "sets": 3,
+                "prescription": "3 × 10 each leg"
+            },
+            {
+                "name": "Standing Calf Raise",
+                "sets": 3,
+                "prescription": "3 × 12–15"
+            },
+            {
+                "name": "Ab Wheel Rollout",
+                "sets": 3,
+                "prescription": "3 × 8–12"
+            }
         ],
-        recovery: ["Foam roll calves: 1 min each", "Foam roll quads: 1 min each", "Hip flexor stretch: 30 sec each", "Hamstring stretch: 30 sec each"],
-        ankle: ["Knee-to-wall ankle mobilisation: 2 x 10 each side", "Band ankle eversion: 2 x 15 each side", "Single-leg balance: 2 x 30-60 sec each side"],
-        shoulder: ["Thoracic rotations: 8 each side", "Wall slides: 2 x 8", "Band external rotations: 2 x 10", "Arm reach/protraction: 2 x 8 each side"]
+        "recovery": [
+            "Shoulder pendulums: 1 × 15 each direction",
+            "Side arm circles: 2 × 15",
+            "Wall crawls: 2 × 15",
+            "Thoracic rotations: 1 × 8 each side",
+            "Knee to wall: 1 × 10 each leg",
+            "Straight knee calf stretch: 1 × 30 sec each",
+            "Bent knee calf stretch: 1 × 30 sec each",
+            "Quad stretch: 1 × 30 sec each",
+            "Hip flexor stretch: 1 × 30 sec each",
+            "Hamstring stretch: 1 × 30 sec each"
+        ],
+        "additional": [
+            {
+                "name": "Toe Raises",
+                "sets": 2,
+                "prescription": "2 × 15"
+            }
+        ]
     },
     "Tempo Run": {
-        run: [{ name: "Tempo Run", prescription: "Tempo session from your running app" }],
-        recovery: ["Foam roll calves: 1 min each", "Calf stretch, straight knee: 30 sec each", "Calf stretch, bent knee: 30 sec each", "Quad stretch: 30 sec each"],
-        shoulder: ["Thoracic rotations: 8 each side", "Wall slides: 2 x 8", "Band external rotations: 2 x 10", "Arm reach/protraction: 2 x 8 each side"]
-    },
-    "Full Body Volume": {
-        main: [
-            { name: "Deadlift", prescription: "3 x 6-8", sets: 3 },
-            { name: "Incline Dumbbell Press", prescription: "3 x 8-12", sets: 3 },
-            { name: "Chin-ups or Lat Pulldown", prescription: "3 x 8-12", sets: 3 },
-            { name: "Dumbbell Row", prescription: "3 x 10-12", sets: 3 },
-            { name: "Dumbbell Shoulder Press", prescription: "3 x 10-12", sets: 3 },
-            { name: "Side Plank", prescription: "3 x 30-45 sec each side", sets: 3, timed: true }
+        "run": [
+            {
+                "name": "Tempo Run",
+                "prescription": "Tempo session as prescribed by your running app"
+            }
         ],
-        finisher: ["Optional finisher, only if fresh: 2 rounds", "10 Goblet Squats", "10 Push-ups", "10 Rows"],
-        recovery: ["Foam roll upper back: 1-2 min", "Pec stretch: 30 sec each", "Thoracic rotations: 5 each side"],
-        shoulder: ["Thoracic rotations: 8 each side", "Wall slides: 2 x 8", "Band external rotations: 2 x 10", "Arm reach/protraction: 2 x 8 each side"]
+        "recovery": [
+            "Shoulder pendulums: 1 × 15 each direction",
+            "Side arm circles: 2 × 15",
+            "Wall crawls: 2 × 15",
+            "Thoracic rotations: 1 × 8 each side",
+            "Knee to wall: 1 × 10 each leg",
+            "Straight knee calf stretch: 1 × 30 sec each",
+            "Bent knee calf stretch: 1 × 30 sec each",
+            "Calf foam rolling: 1 × 60 sec each",
+            "Hip flexor stretch: 1 × 30 sec each"
+        ],
+        "additional": [
+            {
+                "name": "Band External Rotation",
+                "sets": 2,
+                "prescription": "2 × 12–15"
+            }
+        ]
     },
-    "Long Run + Mobility": {
-        run: [{ name: "Long Run", prescription: "Long easy run" }],
-        recovery: ["Foam roll calves: 1-2 min each", "Foam roll quads: 1 min each", "Foam roll glutes: 1 min total", "Massage ball feet: 1-1.5 min each", "Calf stretch, straight knee: 30 sec each", "Calf stretch, bent knee: 30 sec each", "Hip flexor stretch: 30 sec each", "Glute stretch: 30 sec each", "Hamstring stretch: 30 sec each"],
-        shoulder: ["Thoracic rotations: 8 each side", "Band external rotations: 2 x 10", "Wall slides: 2 x 8"]
+    "Joint Strength and Stability": {
+        "main": [
+            {
+                "name": "Single Leg Romanian Deadlift",
+                "sets": 3,
+                "prescription": "3 × 8 each leg"
+            },
+            {
+                "name": "Dumbbell Lateral Raise",
+                "sets": 3,
+                "prescription": "3 × 12–15"
+            },
+            {
+                "name": "Dumbbell Front Raise",
+                "sets": 3,
+                "prescription": "3 × 12–15"
+            },
+            {
+                "name": "Band External Rotation",
+                "sets": 3,
+                "prescription": "3 × 12–15"
+            },
+            {
+                "name": "Step Downs",
+                "sets": 3,
+                "prescription": "3 × 8 each leg"
+            },
+            {
+                "name": "Star Excursion Balance",
+                "sets": 2,
+                "prescription": "2 × 45 sec each leg",
+                "timed": true
+            },
+            {
+                "name": "Single Leg Calf Raise",
+                "sets": 3,
+                "prescription": "3 × 12 each leg"
+            },
+            {
+                "name": "Side Plank",
+                "sets": 3,
+                "prescription": "3 × 30–45 sec each side",
+                "timed": true
+            }
+        ],
+        "recovery": [
+            "Shoulder pendulums: 1 × 15 each direction",
+            "Side arm circles: 2 × 15",
+            "Wall crawls: 2 × 15",
+            "Thoracic rotations: 1 × 8 each side",
+            "Knee to wall: 1 × 10 each leg",
+            "Straight knee calf stretch: 1 × 30 sec each",
+            "Bent knee calf stretch: 1 × 30 sec each"
+        ]
+    },
+    "Long Run": {
+        "run": [
+            {
+                "name": "Long Run",
+                "prescription": "Easy long run, progressing towards 10–20 km"
+            }
+        ],
+        "recovery": [
+            "Shoulder pendulums: 1 × 15 each direction",
+            "Side arm circles: 2 × 15",
+            "Wall crawls: 2 × 15",
+            "Thoracic rotations: 2 × 8 each side",
+            "Knee to wall: 2 × 10 each leg",
+            "Straight knee calf stretch: 2 × 30 sec each",
+            "Bent knee calf stretch: 2 × 30 sec each",
+            "Hip flexor stretch: 2 × 30 sec each",
+            "Hamstring stretch: 2 × 30 sec each",
+            "Glute stretch: 2 × 30 sec each",
+            "Pec stretch: 2 × 30 sec",
+            "Lat stretch: 2 × 30 sec",
+            "Calf foam rolling: 1 × 90 sec each",
+            "Quad foam rolling: 1 × 60 sec each",
+            "Foot massage ball: 1 × 60 sec each"
+        ]
     }
 };
 
@@ -91,10 +301,9 @@ sessionType.addEventListener("change", function () {
 
     if (template.run) loadRunCards(runPlan, template.run);
     if (template.main) loadExerciseCards(mainPlan, template.main);
-    if (template.finisher) loadSimpleList(mainPlan, template.finisher);
+    if (template.additional) loadExerciseCards(document.getElementById("additional-plan"), template.additional);
     if (template.recovery) loadSimpleList(mobilityPlan, template.recovery);
-    if (template.ankle) loadSimpleList(mobilityPlan, template.ankle);
-    if (template.shoulder) loadSimpleList(mobilityPlan, template.shoulder);
+
 
     scheduleDraftSave();
 });
@@ -103,13 +312,23 @@ submitSessionButton.addEventListener("click", submitSession);
 clearDraftButton.addEventListener("click", clearDraft);
 saveBodyweightButton.addEventListener("click", saveBodyweight);
 
-document.addEventListener("input", scheduleDraftSave);
-document.addEventListener("change", scheduleDraftSave);
+document.getElementById('session-date').addEventListener('input', scheduleDraftSave);
+for (const id of ['run-plan','main-plan','additional-plan','mobility-plan']) {
+    document.getElementById(id).addEventListener('input', scheduleDraftSave);
+    document.getElementById(id).addEventListener('change', scheduleDraftSave);
+}
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden' && draftTimer) { clearTimeout(draftTimer); draftTimer = null; saveDraft(); }
+});
+window.addEventListener('pagehide', () => {
+    if (draftTimer) { clearTimeout(draftTimer); draftTimer = null; saveDraft(); }
+});
 
 function clearPlans() {
     mainPlan.innerHTML = "";
     mobilityPlan.innerHTML = "";
     runPlan.innerHTML = "";
+    document.getElementById("additional-plan").innerHTML = "";
 }
 
 function loadRunCards(container, runs) {
@@ -145,6 +364,7 @@ function loadExerciseCards(container, exercises) {
         card.dataset.name = exercise.name;
         card.dataset.prescription = exercise.prescription;
         card.dataset.timed = exercise.timed ? "true" : "false";
+        card.dataset.bodyweight = exercise.bodyweight ? "true" : "false";
 
         const lastPerformance = getLastExercisePerformance(exercise.name);
         let lastPerformanceText = "";
@@ -155,7 +375,7 @@ function loadExerciseCards(container, exercises) {
                 .map(set => `${set.weight ?? "BW"} x ${set.reps}`)
                 .join(", ");
 
-            lastPerformanceText = `<p class="last-performance">Last time: ${setSummary}</p>`;
+            lastPerformanceText = `<p class="last-performance">Last time (${lastPerformance.date}): ${setSummary}</p>`;
         }
 
         let setRows = "";
@@ -164,8 +384,8 @@ function loadExerciseCards(container, exercises) {
             setRows += `
                 <div class="set-row">
                     <span>Set ${i}</span>
-                    <input class="set-weight" type="number" step="0.5" placeholder="kg">
-                    <input class="set-reps" type="text" placeholder="${exercise.timed ? "sec" : "reps"}">
+                    <input class="set-weight" type="number" step="0.5" inputmode="decimal" placeholder="kg">
+                    <input class="set-reps" type="number" min="0" step="1" inputmode="numeric" placeholder="${exercise.timed ? "sec" : "reps"}">
                 </div>
             `;
         }
@@ -174,6 +394,8 @@ function loadExerciseCards(container, exercises) {
             <h3>${exercise.name}</h3>
             <p>${exercise.prescription}</p>
             ${lastPerformanceText}
+            ${lastPerformance ? '<button type="button" class="copy-last secondary-button">Copy Last Workout</button>' : ''}
+            ${exercise.bodyweight ? '<p>Weight: enter added kg as positive, band assistance as negative or 0 for bodyweight.</p>' : ''}
             <div class="set-header">
                 <span>Set</span>
                 <span>Weight</span>
@@ -184,6 +406,16 @@ function loadExerciseCards(container, exercises) {
             <input class="exercise-notes" type="text" placeholder="Optional">
         `;
 
+        const copyButton = card.querySelector('.copy-last');
+        if (copyButton && lastPerformance) copyButton.addEventListener('click', () => {
+            card.querySelectorAll('.set-row').forEach((row, index) => {
+                const previous = lastPerformance.sets[index];
+                if (!previous) return;
+                row.querySelector('.set-weight').value = previous.weight ?? '';
+                row.querySelector('.set-reps').value = previous.reps ?? '';
+            });
+            scheduleDraftSave();
+        });
         container.appendChild(card);
     });
 }
@@ -217,9 +449,7 @@ function scheduleDraftSave() {
 
     clearTimeout(draftTimer);
 
-    draftTimer = setTimeout(() => {
-        saveDraft();
-    }, 5000);
+    draftTimer = setTimeout(() => { draftTimer = null; saveDraft(); }, 800);
 }
 
 function saveDraft() {
@@ -236,7 +466,7 @@ function saveDraft() {
 }
 
 function restoreDraft() {
-    const draft = JSON.parse(localStorage.getItem("currentDraftSession"));
+    const draft = JSON.parse(localStorage.getItem("currentDraftSession") || "null");
 
     if (!draft) {
         draftStatus.textContent = "No draft saved.";
@@ -269,7 +499,7 @@ function restoreRunDraft(runs) {
         const run = runs[index];
         if (!run) return;
 
-        card.querySelector(".run-distance").value = run.distance || "";
+        card.querySelector(".run-distance").value = run.distance ?? "";
         card.querySelector(".run-time").value = run.time || "";
         card.querySelector(".run-pace").value = run.pace || "";
         card.querySelector(".run-hr").value = run.averageHeartRate || "";
@@ -291,7 +521,7 @@ function restoreExerciseDraft(exercises) {
             if (!set) return;
 
             row.querySelector(".set-weight").value = set.weight ?? "";
-            row.querySelector(".set-reps").value = set.reps || "";
+            row.querySelector(".set-reps").value = set.reps ?? "";
         });
 
         card.querySelector(".exercise-notes").value = exercise.notes || "";
@@ -337,7 +567,7 @@ async function submitSession() {
     };
 
     const sessions = JSON.parse(localStorage.getItem("trainingSessions")) || [];
-    if (typeof cloudUser !== 'undefined' && cloudUser && !cloudReady) {
+    if (typeof cloudUser !== 'undefined' && (!cloudUser || !cloudReady)) {
         alert('Cloud account is not ready. Import your existing phone data first.'); return;
     }
     try { await cloudSaveWorkout(session); } catch (error) { alert('Cloud save failed: ' + error.message); return; }
@@ -347,6 +577,7 @@ async function submitSession() {
     localStorage.removeItem("currentDraftSession");
 
     renderSavedSessions();
+    renderDashboard();
     clearDraft();
 
     draftStatus.textContent = "Session submitted. Draft cleared.";
@@ -382,9 +613,10 @@ function collectExercises() {
             name: card.dataset.name,
             prescription: card.dataset.prescription,
             timed: card.dataset.timed === "true",
+            bodyweight: card.dataset.bodyweight === "true",
             sets: sets,
             notes: card.querySelector(".exercise-notes").value,
-            totalVolume: calculateTotalVolume(sets)
+            totalVolume: calculateTotalVolume(sets, card.dataset.bodyweight === "true", card.dataset.timed === "true")
         };
     });
 }
@@ -397,26 +629,25 @@ function collectMobility() {
     }));
 }
 
-function calculateTotalVolume(sets) {
+function calculateTotalVolume(sets, bodyweight = false, timed = false) {
+    if (timed) return null;
+    const entries = JSON.parse(localStorage.getItem('bodyweights') || '[]');
+    const latestWeight = entries.slice().sort((a,b) => b.date.localeCompare(a.date))[0]?.bodyweight;
+    if (bodyweight && !latestWeight) return null;
     return sets.reduce((total, set) => {
-        const repsNumber = Number(set.reps);
-
-        if (set.weight !== null && !isNaN(repsNumber)) {
-            return total + set.weight * repsNumber;
-        }
-
-        return total;
+        if (set.reps === '' || set.reps === null || !Number.isFinite(Number(set.reps))) return total;
+        const load = bodyweight ? Number(latestWeight) + (set.weight ?? 0) : set.weight;
+        return load === null ? total : total + Math.max(0, load) * Number(set.reps);
     }, 0);
 }
 
 function getLastExercisePerformance(exerciseName) {
-    const sessions = JSON.parse(localStorage.getItem("trainingSessions")) || [];
-
-    for (let i = sessions.length - 1; i >= 0; i--) {
-        const match = sessions[i].exercises?.find(exercise => exercise.name === exerciseName);
-        if (match) return match;
+    const sessions = JSON.parse(localStorage.getItem('trainingSessions') || '[]');
+    const sorted = sessions.slice().sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+    for (const session of sorted) {
+        const match = session.exercises?.find(exercise => exercise.name === exerciseName);
+        if (match) return { ...match, date: session.date };
     }
-
     return null;
 }
 
@@ -433,11 +664,14 @@ function renderSavedSessions() {
         const card = document.createElement("div");
         card.className = "exercise-card";
 
-        const exerciseSummary = session.exercises.map(exercise => `<p>${exercise.name}: ${exercise.totalVolume} kg total volume</p>`).join("");
-        const runSummary = session.runs.map(run => `<p>${run.name}: ${run.distance} km, ${run.time}</p>`).join("");
+        const exerciseSummary = (session.exercises || []).map(exercise => {
+            const sets = (exercise.sets || []).filter(x => x.reps !== '' && x.reps != null).map(x => `${x.weight ?? 'BW'} kg × ${x.reps}${exercise.timed ? ' sec' : ''}`).join(', ');
+            return `<p>${escapeHtml(exercise.name)}: ${escapeHtml(sets || 'No sets recorded')}</p>`;
+        }).join('');
+        const runSummary = (session.runs || []).map(run => `<p>${escapeHtml(run.name)}: ${escapeHtml(run.distance)} km, ${escapeHtml(run.time)}</p>`).join("");
 
         card.innerHTML = `
-            <h3>${session.date} - ${session.type}</h3>
+            <h3>${escapeHtml(session.date)} · ${escapeHtml(session.type)}</h3>
             ${runSummary}
             ${exerciseSummary}
             <button class="delete-button" onclick="deleteSession(${session.id})">Delete Session</button>
@@ -450,12 +684,13 @@ function renderSavedSessions() {
 async function deleteSession(sessionId) {
     const sessions = JSON.parse(localStorage.getItem("trainingSessions")) || [];
     if (!confirm('Delete this session?')) return;
-    if (typeof cloudUser !== 'undefined' && cloudUser && !cloudReady) { alert('Import your existing data first.'); return; }
+    if (typeof cloudUser !== 'undefined' && (!cloudUser || !cloudReady)) { alert('Import your existing data first.'); return; }
     try { await cloudDeleteWorkout(sessionId); } catch (error) { alert('Cloud deletion failed: ' + error.message); return; }
     const updatedSessions = sessions.filter(session => session.id !== sessionId);
 
     localStorage.setItem("trainingSessions", JSON.stringify(updatedSessions));
     renderSavedSessions();
+    renderDashboard();
 }
 
 async function saveBodyweight() {
@@ -471,12 +706,13 @@ async function saveBodyweight() {
     };
 
     const bodyweights = JSON.parse(localStorage.getItem("bodyweights")) || [];
-    if (typeof cloudUser !== 'undefined' && cloudUser && !cloudReady) { alert('Import your existing data first.'); return; }
+    if (typeof cloudUser !== 'undefined' && (!cloudUser || !cloudReady)) { alert('Import your existing data first.'); return; }
     try { await cloudSaveWeight(entry); } catch (error) { alert('Cloud save failed: ' + error.message); return; }
     bodyweights.push(entry);
 
     localStorage.setItem("bodyweights", JSON.stringify(bodyweights));
     renderBodyweightHistory();
+    renderDashboard();
 
     alert("Bodyweight saved.");
 }
@@ -501,6 +737,7 @@ function renderBodyweightHistory() {
 window.addEventListener("load", function () {
     renderSavedSessions();
     renderBodyweightHistory();
+    renderDashboard();
     restoreDraft();
 });
 
@@ -534,3 +771,46 @@ document.getElementById("export-data-button").addEventListener("click", function
     anchor.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+let dashboardCharts = [];
+function renderDashboard() {
+    if (!window.Chart) return;
+    dashboardCharts.forEach(chart => chart.destroy()); dashboardCharts = [];
+    const sessions = JSON.parse(localStorage.getItem('trainingSessions') || '[]');
+    const weights = JSON.parse(localStorage.getItem('bodyweights') || '[]').slice().sort((a,b) => a.date.localeCompare(b.date));
+    const runs = sessions.flatMap(s => (s.runs || []).filter(r => Number(r.distance)>0).map(r => ({date:s.date, distance:Number(r.distance), time:r.time}))).sort((a,b)=>a.date.localeCompare(b.date));
+    const completed = sessions.filter(s => s.date);
+    const totalKm = runs.reduce((sum,r)=>sum+r.distance,0);
+    document.getElementById('dashboard-summary').textContent = `${completed.length} sessions · ${totalKm.toFixed(1)} km logged · ${weights.length} weigh-ins`;
+    const graph = (id, labels, values, label) => {
+        const canvas = document.getElementById(id);
+        dashboardCharts.push(new Chart(canvas, {type:'line',data:{labels,datasets:[{label,data:values,borderColor:'#70a5ff',backgroundColor:'rgba(112,165,255,.12)',tension:.2,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#eee'}}},scales:{x:{ticks:{color:'#aaa',maxTicksLimit:7}},y:{ticks:{color:'#aaa'}}}}}));
+    };
+    graph('weight-chart',weights.map(w=>w.date),weights.map(w=>Number(w.bodyweight)),'Bodyweight (kg)');
+    const weeks = new Map();
+    for (const r of runs) {
+        const d = new Date(r.date+'T12:00:00'); const dow = (d.getDay()+6)%7; d.setDate(d.getDate()-dow);
+        const key = d.toISOString().slice(0,10); weeks.set(key,(weeks.get(key)||0)+r.distance);
+    }
+    graph('run-chart',[...weeks.keys()].sort(),[...weeks.keys()].sort().map(k=>Number(weeks.get(k).toFixed(2))),'Weekly running distance (km)');
+    const selector = document.getElementById('strength-exercise');
+    const selected = selector.value;
+    const names = [...new Set(sessions.flatMap(s=>(s.exercises||[]).map(e=>e.name)))].sort();
+    selector.replaceChildren(new Option('Select exercise',''),...names.map(n=>new Option(n,n)));
+    selector.value = names.includes(selected) ? selected : (names[0] || '');
+    renderStrengthChart(sessions);
+    const counts = new Map();
+    for (const s of completed) {const key=s.date.slice(0,7); counts.set(key,(counts.get(key)||0)+1);}
+    graph('consistency-chart',[...counts.keys()].sort(),[...counts.keys()].sort().map(k=>counts.get(k)),'Sessions per month');
+}
+function renderStrengthChart(sessions) {
+    const existing = dashboardCharts.find(c=>c.canvas.id==='strength-chart');
+    if (existing) {existing.destroy();dashboardCharts=dashboardCharts.filter(c=>c!==existing);}
+    const name=document.getElementById('strength-exercise').value;
+    const points=sessions.slice().sort((a,b)=>a.date.localeCompare(b.date)).flatMap(s=>(s.exercises||[]).filter(e=>e.name===name).map(e=>({date:s.date,volume:e.totalVolume})) ).filter(p=>p.volume!==null && p.volume!==undefined && Number.isFinite(Number(p.volume)));
+    dashboardCharts.push(new Chart(document.getElementById('strength-chart'),{type:'line',data:{labels:points.map(p=>p.date),datasets:[{label:'Recorded volume (kg × reps)',data:points.map(p=>p.volume),borderColor:'#70a5ff',tension:.2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#eee'}}},scales:{x:{ticks:{color:'#aaa',maxTicksLimit:7}},y:{ticks:{color:'#aaa'}}}}}));
+}
+document.getElementById('strength-exercise').addEventListener('change',()=>renderStrengthChart(JSON.parse(localStorage.getItem('trainingSessions')||'[]')));
