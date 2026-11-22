@@ -17,14 +17,16 @@ async function stableId(prefix, id) {
     const hex = Array.from(digest.slice(0, 16), b => b.toString(16).padStart(2, '0')).join('');
     return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
 }
-async function cloudSaveWorkout(workout) {
-    if (!cloudReady || !cloudUser) return;
+async function cloudSaveWorkout(workout, importing = false) {
+    if (!cloudUser) throw new Error("Not signed in");
+    if (!cloudReady && !importing) throw new Error("Cloud is not ready");
     const id = await stableId('workout', workout.id);
     const { error } = await db.from('workout_sessions').upsert({ id, user_id: cloudUser.id, session_date: workout.date, session_type: workout.type, session_data: workout });
     if (error) throw error;
 }
-async function cloudSaveWeight(entry) {
-    if (!cloudReady || !cloudUser) return;
+async function cloudSaveWeight(entry, importing = false) {
+    if (!cloudUser) throw new Error("Not signed in");
+    if (!cloudReady && !importing) throw new Error("Cloud is not ready");
     const id = await stableId('weight', entry.id);
     const { error } = await db.from('bodyweight_entries').upsert({ id, user_id: cloudUser.id, entry_date: entry.date, weight_kg: entry.bodyweight });
     if (error) throw error;
@@ -53,6 +55,12 @@ async function cloudRefresh() {
     ]);
     const sessions = workouts.map(row => row.session_data).sort((a,b) => a.date.localeCompare(b.date));
     const bodyweights = weights.map(row => ({id: row.id, date: row.entry_date, bodyweight: Number(row.weight_kg)})).sort((a,b) => a.date.localeCompare(b.date));
+    const localSessions = readLocal('trainingSessions');
+    const localWeights = readLocal('bodyweights');
+    if ((localSessions.length > 0 && sessions.length === 0) ||
+        (localWeights.length > 0 && bodyweights.length === 0)) {
+        throw new Error('Cloud contains no matching records for existing local data. Local data has NOT been replaced.');
+    }
     localStorage.setItem('trainingSessions', JSON.stringify(sessions));
     localStorage.setItem('bodyweights', JSON.stringify(bodyweights));
     renderSavedSessions();
@@ -68,13 +76,21 @@ async function cloudImport() {
     button.disabled = true;
     statusCloud('Importing. Do not close this page.');
     try {
-        for (const workout of sessions) await cloudSaveWorkout(workout);
-        for (const entry of weights) await cloudSaveWeight(entry);
-        localStorage.setItem('cloudMigrated:' + cloudUser.id, 'yes');
+        for (const workout of sessions) await cloudSaveWorkout(workout, true);
+        for (const entry of weights) await cloudSaveWeight(entry, true);
+        const [remoteSessions, remoteWeights] = await Promise.all([
+            fetchAll('workout_sessions', 'id'),
+            fetchAll('bodyweight_entries', 'id')
+        ]);
+        if (remoteSessions.length < sessions.length || remoteWeights.length < weights.length) {
+            throw new Error(`Upload not verified: cloud has ${remoteSessions.length} workouts and ${remoteWeights.length} weights; this browser has ${sessions.length} and ${weights.length}.`);
+        }
         cloudReady = true;
         await cloudRefresh();
-        alert('Cloud import completed. Check the counts above before using another device.');
+        localStorage.setItem('cloudMigrated:' + cloudUser.id, 'yes');
+        alert('Cloud import verified. Check the counts above before using another device.');
     } catch (error) {
+        cloudReady = false;
         statusCloud('Import failed: ' + error.message + '. Your browser data is unchanged.');
     } finally { button.disabled = false; }
 }
