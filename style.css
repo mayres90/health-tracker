@@ -145,3 +145,23 @@ button:hover {
 }
 
 .chart-wrap{height:245px;position:relative;margin-bottom:24px} .exercise-card button.copy-last{margin-bottom:12px} .set-row{grid-template-columns:58px minmax(0,1fr) minmax(0,1fr)} .set-header{grid-template-columns:58px minmax(0,1fr) minmax(0,1fr)} .exercise-card{overflow-wrap:anywhere} @media(max-width:600px){body{padding:10px}section{padding:14px;margin-bottom:14px}.set-row{gap:6px}.set-row input{min-width:0;padding:12px 8px}h1{font-size:1.7rem}}
+
+/* v9 navigation and page layout */
+[hidden] { display: none !important; }
+body { padding-bottom: 94px; }
+body > h1 { margin: 12px 0 6px; text-align: left; font-size: 1.65rem; }
+.header-status { margin: 0 0 16px; font-size: .84rem; color: #a9b7ca; }
+.app-nav { display: flex; gap: 8px; margin: 0 0 20px; }
+.app-nav .nav-tab { margin: 0; padding: 12px 8px; font-size: 14px; font-weight: 600; flex: 1; width: auto; background: #252b36; color: #c3cfdf; border: 1px solid #343e4d; }
+.app-nav .nav-tab.active { background: #3a7bfd; color: #fff; border-color: #3a7bfd; }
+.app-view { display: block; }
+.page-heading { margin: 6px 0 18px; }
+.app-view section { margin-bottom: 16px; }
+#view-settings section { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+ body { padding: 12px 12px 102px; }
+ body > h1 { font-size: 1.5rem; }
+ .app-nav { position: fixed; z-index: 50; left: 0; right: 0; bottom: 0; margin: 0; padding: 9px 10px calc(9px + env(safe-area-inset-bottom)); background: #171c25; border-top: 1px solid #394151; gap: 6px; box-shadow: 0 -5px 18px #0007; }
+ .app-nav .nav-tab { min-height: 52px; padding: 10px 3px; font-size: 13px; }
+ .chart-wrap { height: 230px; }
+}

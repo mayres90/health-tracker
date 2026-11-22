@@ -1,123 +1,106 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#121212">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="icon" href="icon.svg" type="image/svg+xml">
-    <title>Health Tracker</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#121212" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<link href="icon.svg" rel="icon" type="image/svg+xml"/>
+<title>Health Tracker</title>
+<link href="style.css?v=9" rel="stylesheet"/>
 </head>
 <body>
-    <h1>Health Tracker</h1>
+<h1>Health Tracker</h1><p aria-live="polite" class="header-status" id="header-sync-status">Cloud sync available in Settings</p><nav aria-label="Main navigation" class="app-nav"><button aria-controls="view-workout" class="nav-tab" data-view="workout" type="button">Workout</button><button aria-controls="view-progress" class="nav-tab" data-view="progress" type="button">Progress</button><button aria-controls="view-history" class="nav-tab" data-view="history" type="button">History</button><button aria-controls="view-settings" class="nav-tab" data-view="settings" type="button">Settings</button></nav><main class="app-view" data-page="workout" id="view-workout"><section>
+<h2>Weekly Check-In</h2>
+<label for="checkin-date">Date</label>
+<input id="checkin-date" type="date"/>
+<label for="bodyweight">Bodyweight (kg)</label>
+<input id="bodyweight" placeholder="90.0" step="0.1" type="number"/>
+<button id="save-bodyweight-button">Save Bodyweight</button>
+</section><section>
+<h2>Training Session</h2>
+<p id="draft-status">No draft loaded.</p>
+<label for="session-date">Date</label>
+<input id="session-date" type="date"/>
+<label for="session-type">Session Type</label>
+<select id="session-type">
+<option value="">Select session type</option>
+<option value="Speed Run">Day 1 - Speed Run</option>
+<option value="Upper Strength">Day 2 - Upper Strength</option>
+<option value="Easy Run">Day 3 - Easy Run</option>
+<option value="Lower Strength">Day 4 - Lower Strength</option>
+<option value="Tempo Run">Day 5 - Tempo Run</option>
+<option value="Joint Strength and Stability">Day 6 - Joint Strength and Stability</option>
+<option value="Long Run">Day 7 - Long Run</option>
+</select>
+</section><section>
+<h2>Run</h2>
+<div id="run-plan"></div>
+</section><section>
+<h2>Main Workout</h2>
+<div id="main-plan"></div>
+</section><section>
+<h2>Additional Strengthening / Stability</h2>
+<div id="additional-plan"></div>
+</section><section>
+<h2>Recovery / Mobility</h2>
+<div id="mobility-plan"></div>
+</section><section>
+<button id="submit-session-button">Submit Session</button>
+<button class="secondary-button" id="clear-draft-button">Clear Draft</button>
+</section></main><main class="app-view" data-page="progress" hidden="" id="view-progress"><section>
+<h2>Progress Dashboard</h2>
+<p id="dashboard-summary"></p>
+<h3>Bodyweight</h3><div class="chart-wrap"><canvas id="weight-chart"></canvas></div>
+<h3>Weekly Running Distance</h3><div class="chart-wrap"><canvas id="run-chart"></canvas></div>
+<h3>Strength Progression</h3>
+<label for="strength-exercise">Exercise</label><select id="strength-exercise"></select>
+<div class="chart-wrap"><canvas id="strength-chart"></canvas></div>
+<h3>Training Consistency</h3><div class="chart-wrap"><canvas id="consistency-chart"></canvas></div>
+</section></main><main class="app-view" data-page="history" hidden="" id="view-history"><h2 class="page-heading">Training History</h2><section>
+<h2>Saved Sessions</h2>
+<div id="saved-sessions"></div>
+</section><section>
+<h2>Bodyweight History</h2>
+<div id="bodyweight-history"></div>
+</section></main><main class="app-view" data-page="settings" hidden="" id="view-settings"><h2 class="page-heading">Settings</h2><section>
+<h2>Cloud Sync</h2>
+<p id="cloud-status" role="status">Connecting...</p>
+<div id="cloud-auth">
+<label for="cloud-email">Email</label><input autocomplete="email" id="cloud-email" type="email"/>
+<label for="cloud-password">Password</label><input autocomplete="current-password" id="cloud-password" type="password"/>
+<button id="cloud-signup" type="button">Create Account</button>
+<button id="cloud-signin" type="button">Sign In</button>
+</div>
+<div hidden="" id="cloud-tools">
+<p>Signed in as <span id="cloud-email-display"></span></p>
+<button id="cloud-import" type="button">Import This Browser's Existing Data</button>
+<button id="cloud-refresh" type="button">Refresh From Cloud</button>
+<button id="cloud-signout" type="button">Sign Out</button>
+<p>Import on the phone containing your existing workouts first. Keep your downloaded JSON backup.</p>
+</div>
+</section><section>
+<h2>Data Backup</h2>
+<p>Download a copy of your saved workouts, bodyweight history and draft before cloud migration.</p>
+<button id="export-data-button" type="button">Export Data (JSON)</button>
+</section></main>
 
-    <section>
-        <h2>Cloud Sync</h2>
-        <p id="cloud-status" role="status">Connecting...</p>
-        <div id="cloud-auth">
-            <label for="cloud-email">Email</label><input id="cloud-email" type="email" autocomplete="email">
-            <label for="cloud-password">Password</label><input id="cloud-password" type="password" autocomplete="current-password">
-            <button id="cloud-signup" type="button">Create Account</button>
-            <button id="cloud-signin" type="button">Sign In</button>
-        </div>
-        <div id="cloud-tools" hidden>
-            <p>Signed in as <span id="cloud-email-display"></span></p>
-            <button id="cloud-import" type="button">Import This Browser's Existing Data</button>
-            <button id="cloud-refresh" type="button">Refresh From Cloud</button>
-            <button id="cloud-signout" type="button">Sign Out</button>
-            <p>Import on the phone containing your existing workouts first. Keep your downloaded JSON backup.</p>
-        </div>
-    </section>
-    <section>
-        <h2>Weekly Check-In</h2>
 
-        <label for="checkin-date">Date</label>
-        <input type="date" id="checkin-date">
 
-        <label for="bodyweight">Bodyweight (kg)</label>
-        <input type="number" id="bodyweight" step="0.1" placeholder="90.0">
 
-        <button id="save-bodyweight-button">Save Bodyweight</button>
-    </section>
 
-    <section>
-        <h2>Training Session</h2>
 
-        <p id="draft-status">No draft loaded.</p>
 
-        <label for="session-date">Date</label>
-        <input type="date" id="session-date">
 
-        <label for="session-type">Session Type</label>
-        <select id="session-type">
-            <option value="">Select session type</option>
-            <option value="Speed Run">Day 1 - Speed Run</option>
-            <option value="Upper Strength">Day 2 - Upper Strength</option>
-            <option value="Easy Run">Day 3 - Easy Run</option>
-            <option value="Lower Strength">Day 4 - Lower Strength</option>
-            <option value="Tempo Run">Day 5 - Tempo Run</option>
-            <option value="Joint Strength and Stability">Day 6 - Joint Strength and Stability</option>
-            <option value="Long Run">Day 7 - Long Run</option>
-        </select>
-    </section>
 
-    <section>
-        <h2>Run</h2>
-        <div id="run-plan"></div>
-    </section>
 
-    <section>
-        <h2>Main Workout</h2>
-        <div id="main-plan"></div>
-    </section>
 
-    <section>
-        <h2>Additional Strengthening / Stability</h2>
-        <div id="additional-plan"></div>
-    </section>
 
-    <section>
-        <h2>Recovery / Mobility</h2>
-        <div id="mobility-plan"></div>
-    </section>
-
-    <section>
-        <button id="submit-session-button">Submit Session</button>
-        <button id="clear-draft-button" class="secondary-button">Clear Draft</button>
-    </section>
-
-    <section>
-        <h2>Data Backup</h2>
-        <p>Download a copy of your saved workouts, bodyweight history and draft before cloud migration.</p>
-        <button type="button" id="export-data-button">Export Data (JSON)</button>
-    </section>
-
-    <section>
-        <h2>Progress Dashboard</h2>
-        <p id="dashboard-summary"></p>
-        <h3>Bodyweight</h3><div class="chart-wrap"><canvas id="weight-chart"></canvas></div>
-        <h3>Weekly Running Distance</h3><div class="chart-wrap"><canvas id="run-chart"></canvas></div>
-        <h3>Strength Progression</h3>
-        <label for="strength-exercise">Exercise</label><select id="strength-exercise"></select>
-        <div class="chart-wrap"><canvas id="strength-chart"></canvas></div>
-        <h3>Training Consistency</h3><div class="chart-wrap"><canvas id="consistency-chart"></canvas></div>
-    </section>
-
-    <section>
-        <h2>Saved Sessions</h2>
-        <div id="saved-sessions"></div>
-    </section>
-
-    <section>
-        <h2>Bodyweight History</h2>
-        <div id="bodyweight-history"></div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-    <script src="script.js?v=11"></script>
-    <script src="cloud.js?v=11"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<script src="script.js?v=9"></script>
+<script src="cloud.js?v=9"></script>
+<script src="navigation.js?v=9"></script></body>
 </html>
